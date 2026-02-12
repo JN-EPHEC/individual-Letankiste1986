@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import userRoutes from './routes/userRoutes';
+import sequelize from './config/database';
+import './models/User';
 
 
 const app = express();
@@ -11,10 +13,22 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/api', userRoutes);
 
-app.listen(port, () => {
-    console.log(`Serveur lancé sur http://localhost:${port}`);
-});
+sequelize.authenticate()
+    .then(() => {
+        console.log('Connexion à la base de données SQLite établie.');
+    })
+    .catch((error) => {
+        console.error('Erreur de connexion à la base de données SQLite:', error);
+    });
 
+
+sequelize.sync().then(() => {
+    console.log('Synchronisation du modèle avec la base de données effectuée.');
+
+    app.listen(port, () => {
+        console.log(`Serveur lancé sur http://localhost:${port}`);
+    });
+});
 
 /*const etudiants = [
 { id: 1, nom: "Dupont", prenom: "Jean" },
