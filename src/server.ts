@@ -15,6 +15,8 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/api', userRoutes);
 
+app.use(express.static('public'));
+
 sequelize.authenticate()
     .then(() => {
         console.log('Connexion à la base de données SQLite établie.');
