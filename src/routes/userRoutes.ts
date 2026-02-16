@@ -59,12 +59,12 @@ router.delete('/users/:id', async (req: Request, res: Response) => {
 });
 
 
-router.get('/users/id:', async (req : Request, res : Response) => {
+router.get('/users/:id', async (req : Request, res : Response) => {
   try {
     let id = Number(req.params.id);
 
     if (Number.isNaN(id)) {
-      return res.status(400).json({error: 'ID non valide'});
+      return res.status(400).json({error: 'Mauvaise requête, ID non valide'});
     }
     let user = await User.findByPk(id);
 
@@ -75,12 +75,40 @@ router.get('/users/id:', async (req : Request, res : Response) => {
     res.status(200).json({user})
   } catch (error) {
     console.log("Erreur lors de la récuperation de l'utilisateur:", error);
-    res.status(500).json({error : 'Erreur serveur'})
+    res.status(500).json({error : 'Erreur serveur'});
   }
 });
 
 
+router.put('/users/:id', async (req: Request, res:Response) => {
+  try {
+    let id = Number(req.params.id);
 
+    if  (Number.isNaN(id)) {
+      return res.status(400).json({error: 'Mauvaise requête, ID non valide'});
+    }
+
+    let {nom, prenom} = req.body;
+
+    if (!nom || !prenom) {
+      return res.status(400).json({error: 'Nom et prénom requis'});
+    }
+    let user = await.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({error: 'Utilisateur introuvable'});
+    }
+
+    user.nom = nom;
+    user.prenom = prenom;
+    await user.save()
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour de l'utilisateur", error);
+    res.status(500).json({error: 'Erreur serveur'})
+  }
+});
 
 
 export default router;
