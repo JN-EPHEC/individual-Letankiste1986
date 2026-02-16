@@ -58,4 +58,29 @@ router.delete('/users/:id', async (req: Request, res: Response) => {
   }
 });
 
+
+router.get('/users/id:', async (req : Request, res : Response) => {
+  try {
+    let id = Number(req.params.id);
+
+    if (Number.isNaN(id)) {
+      return res.status(400).json({error: 'ID non valide'});
+    }
+    let user = await User.findByPk(id);
+
+    if(!user) {
+      return res.status(404).json({error : 'Utilisateur introuvable'});
+    }
+
+    res.status(200).json({user})
+  } catch (error) {
+    console.log("Erreur lors de la récuperation de l'utilisateur:", error);
+    res.status(500).json({error : 'Erreur serveur'})
+  }
+});
+
+
+
+
+
 export default router;
