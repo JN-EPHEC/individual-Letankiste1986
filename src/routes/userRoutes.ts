@@ -93,7 +93,7 @@ router.put('/users/:id', async (req: Request, res:Response) => {
     if (!nom || !prenom) {
       return res.status(400).json({error: 'Nom et prénom requis'});
     }
-    let user = await.findByPk(id);
+    let user = await User.findByPk(id);
 
     if (!user) {
       return res.status(404).json({error: 'Utilisateur introuvable'});
