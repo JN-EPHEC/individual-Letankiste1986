@@ -10,9 +10,40 @@ const router = Router();
 router.use(logger);
 //route pour récupérer tous les utilisateurs
 
+
+/** @swagger
+ * /api/users:
+ *   get:
+ *     summary: Récupère tous les utilisateurs
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Liste des utilisateurs
+ */
+
 router.get('/users', getUsers);
 
 //route pour créer un nouvel utilisateur(POST)
+
+/** @swagger
+ * /api/users:
+ *   post:
+ *     summary: Crée un nouvel utilisateur
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nom:
+ *                 type: string
+ *               prenom:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Utilisateur créé avec succès
+ */
 
 router.post('/users', newUser);
 

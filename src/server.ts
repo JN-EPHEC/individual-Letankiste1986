@@ -3,10 +3,18 @@ import userRoutes from './routes/userRoutes';
 import sequelize from './config/database';
 import './models/User';
 import { errorHandler } from './middlewares/errorHandler';
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./config/swagger";
+
+
+
+
 
 
 const app = express();
 const port = 3000;
+
+
 
 app.use(express.json());
 
@@ -17,6 +25,9 @@ app.use(express.json());
 app.use('/api', userRoutes);
 
 app.use(express.static('public'));
+
+// En premier de la liste des routes server.ts
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(errorHandler);
 
