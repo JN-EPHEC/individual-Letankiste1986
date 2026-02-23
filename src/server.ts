@@ -5,6 +5,9 @@ import './models/User';
 import { errorHandler } from './middlewares/errorHandler';
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./config/swagger";
+import cors from 'cors';
+
+
 
 
 
@@ -15,6 +18,7 @@ const app = express();
 const port = 3000;
 
 
+app.use(cors()); // Autorise tout le monde (acceptable uniquement en dev)
 
 app.use(express.json());
 
