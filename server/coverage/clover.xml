@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1773307539469" clover="3.2.0">
-  <project timestamp="1773307539469" name="All files">
-    <metrics statements="32" coveredstatements="32" conditionals="39" coveredconditionals="39" methods="2" coveredmethods="2" elements="73" coveredelements="73" complexity="0" loc="32" ncloc="32" packages="1" files="2" classes="2"/>
+<coverage generated="1773649659400" clover="3.2.0">
+  <project timestamp="1773649659400" name="All files">
+    <metrics statements="44" coveredstatements="44" conditionals="55" coveredconditionals="55" methods="3" coveredmethods="3" elements="102" coveredelements="102" complexity="0" loc="44" ncloc="44" packages="1" files="3" classes="3"/>
     <file name="password.ts" path="C:\Users\letan\Documents\dev3-backend-tp01\server\src\utils\password.ts">
       <metrics statements="16" coveredstatements="16" conditionals="25" coveredconditionals="25" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
@@ -39,6 +39,21 @@
       <line num="75" count="7" type="cond" truecount="2" falsecount="0"/>
       <line num="76" count="5" type="stmt"/>
       <line num="79" count="7" type="stmt"/>
+    </file>
+    <file name="userValid.ts" path="C:\Users\letan\Documents\dev3-backend-tp01\server\src\utils\userValid.ts">
+      <metrics statements="12" coveredstatements="12" conditionals="16" coveredconditionals="16" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="8" count="7" type="cond" truecount="4" falsecount="0"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="13" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="18" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="23" count="4" type="cond" truecount="4" falsecount="0"/>
+      <line num="24" count="1" type="stmt"/>
+      <line num="28" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="33" count="2" type="stmt"/>
     </file>
   </project>
 </coverage>
